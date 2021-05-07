@@ -27,26 +27,24 @@ def lista_movimentos_possiveis(baralho,indice):
     if indice == 0:
         return []
 
-    if extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 1]) and extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 3]):
+    if indice > 2 and extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 1]) and extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 3]):
         return [1,3]
-    if extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 1]) and extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 3]):
+    if indice > 2 and extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 1]) and extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 3]):
         return [1,3]
-    if extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 1]) and extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 3]):
+    if indice > 2 and extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 1]) and extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 3]):
         return [1,3]
-    if extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 1]) and extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 3]):
+    if indice > 2 and extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 1]) and extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 3]):
         return [1,3]
 
     elif extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 1]):
         return [1]
-    elif extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 3]):
+    elif indice > 2 and extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 3]):
         return [1]
     elif extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 1]):
         return [1]
-    elif extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 3]):
+    elif indice > 2 and  extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 3]):
         return [1]
     
     else:
-        return []
+        return [] 
 
-
-#tentei com o metodo que vc sugeriu, mas ainda tem um errinho que nao descobri
