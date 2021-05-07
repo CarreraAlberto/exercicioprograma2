@@ -39,11 +39,11 @@ def lista_movimentos_possiveis(baralho,indice):
     elif extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 1]):
         return [1]
     elif indice > 2 and extrai_valor(baralho[indice]) == extrai_valor(baralho[indice - 3]):
-        return [1]
+        return [3]
     elif extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 1]):
         return [1]
     elif indice > 2 and extrai_naipe(baralho[indice]) == extrai_naipe(baralho[indice - 3]):
-        return [1]
+        return [3]
 
     else:
         return []
