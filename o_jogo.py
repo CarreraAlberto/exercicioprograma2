@@ -115,7 +115,7 @@ if x == '':
         ag = True
         while ag:
             if y<1 or y>len(baralho):
-                y=input('Posição inválida. Por favor escolha outra carta (digite um número entre 1 e {0}):'.format(len(baralho)))
+                y=int(input('Posição inválida. Por favor escolha outra carta (digite um número entre 1 e {0}):'.format(len(baralho))))
             else:
                 ag = False
         ag = True
@@ -128,10 +128,10 @@ if x == '':
                 a=input('Escolha 1 ou 2: ')
                 ag1=True
                 while ag1:
-                    if a ==1:
+                    if a =='1':
                         empilha(baralho, y-1,y-2)
                         ag1=False
-                    elif a==2:
+                    elif a=='2':
                         empilha(baralho, y-1,y-4)
                         ag1=False
                     else:
@@ -144,11 +144,13 @@ if x == '':
                 empilha(baralho,y-1,y-4)
                 ag=False
             else:
-                input('A carta {0}, não pode ser movida. Por favor digite outro número (entre 1 e {1})'.format(baralho[y-1],len(baralho)))
+                y = int(input('A carta {0}, não pode ser movida. Por favor digite outro número (entre 1 e {1})'.format(baralho[y-1],len(baralho))))
             
         i=0
         while i<len(baralho):
             print('{0}. {1}'.format(i+1,baralho[i]))
             i+=1
+
+        
 
 
