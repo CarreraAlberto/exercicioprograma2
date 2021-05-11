@@ -103,7 +103,7 @@ baralho = cria_baralho()
 random.shuffle(baralho)
 
 x = input('Aperte ENTER para começar o jogo...')
-if x == '':
+if x == '' or x!='':
     i=0
     while i<len(baralho):
         print('{0}. {1}'.format(i+1,baralho[i]))
@@ -121,7 +121,7 @@ if x == '':
         ag = True
         while ag:
             escolha = lista_movimentos_possiveis(baralho,y-1)
-            if escolha==[1,3]:
+            if escolha==[1,3] and len(baralho)>3:
                 print('Sobre qual carta voce quer empilhar o {0}'.format(baralho[y-1]))
                 print('1. {0}'.format(baralho[y-2]))
                 print('2. {0}'.format(baralho[y-4]))
@@ -151,17 +151,15 @@ if x == '':
                         y=int(input('Posição inválida. Por favor escolha outra carta (digite um número entre 1 e {0}):'.format(len(baralho))))
                     else:
                         ag3 = False
-                ag3 = True    
+                ag3 = True 
         i=0
         while i<len(baralho):
             print('{0}. {1}'.format(i+1,baralho[i]))
             i+=1
-        if escolha == []:
-            if len(baralho) == 1:
-                print("Parabéns, campeão. Você conseguiu! :]")
-            else:
-                print("Poxa, não foi dessa vez. Mais sorte na próxima! :(")
-
-        
-
-
+        da_jogar=possui_movimentos_possiveis(baralho)
+ 
+    
+    if len(baralho) == 1:
+        print("Parabéns, campeão. Você conseguiu! :]")
+    else:
+        print("Poxa, não foi dessa vez. Mais sorte na próxima! :(")
