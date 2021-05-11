@@ -1,3 +1,4 @@
+import random
 def cria_baralho():
     
     x = ['A♠','2♠','3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠', 'A♥','2♥','3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥', 'A♦','2♦','3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦', 'A♣','2♣','3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣']
@@ -75,8 +76,8 @@ def empilha(lista, origem, destino):
     elif extrai_naipe(lista[origem]) == extrai_naipe(lista[destino]):
         lista[origem], lista[destino] = lista[destino], lista[origem]
         lista.remove(lista[origem])
-        
-    
+
+
     return lista
 
 
@@ -97,5 +98,17 @@ if x == 'n':
 
 else:
     print("Então boa sorte, vamos começar!")
+
+baralho = cria_baralho()
+random.shuffle(baralho)
+
+x = input('Aperte ENTER para começar o jogo...')
+if x == '':
+    i=0
+    while i<len(baralho) and possui_movimentos_possiveis(baralho) == True:
+        print('{0}. {1}'.format(i+1,baralho[i]))
+        i+=1
+    
+    
 
 
