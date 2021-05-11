@@ -135,12 +135,12 @@ if x == '':
                         empilha(baralho, y-1,y-4)
                         ag1=False
                     else:
-                        a
+                        a=input('Escolha 1 ou 2: ')
                 ag=False
-            elif escolha==1:
+            elif escolha==[1]:
                 empilha(baralho,y-1,y-2)
                 ag=False
-            elif escolha==3:
+            elif escolha==[3]:
                 empilha(baralho,y-1,y-4)
                 ag=False
             else:
