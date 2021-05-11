@@ -99,67 +99,82 @@ if x == 'n':
 else:
     print("Então boa sorte, vamos começar!")
 
-baralho = cria_baralho()
-random.shuffle(baralho)
+denovo = True
+while denovo:
+    baralho = cria_baralho()
+    random.shuffle(baralho)
 
-x = input('Aperte ENTER para começar o jogo...')
-if x == '' or x!='':
-    i=0
-    while i<len(baralho):
-        print('{0}. {1}'.format(i+1,baralho[i]))
-        i+=1
-    
-    da_jogar=possui_movimentos_possiveis(baralho)
-    while da_jogar:
-        y = int(input('Escolha uma carta (digite um número entre 1 e {0}):'.format(len(baralho))))
-        ag = True
-        while ag:
-            if y<1 or y>len(baralho):
-                y=int(input('Posição inválida. Por favor escolha outra carta (digite um número entre 1 e {0}):'.format(len(baralho))))
-            else:
-                ag = False
-        ag = True
-        while ag:
-            escolha = lista_movimentos_possiveis(baralho,y-1)
-            if escolha==[1,3] and len(baralho)>3:
-                print('Sobre qual carta voce quer empilhar o {0}'.format(baralho[y-1]))
-                print('1. {0}'.format(baralho[y-2]))
-                print('2. {0}'.format(baralho[y-4]))
-                a=input('Escolha 1 ou 2: ')
-                ag1=True
-                while ag1:
-                    if a =='1':
-                        empilha(baralho, y-1,y-2)
-                        ag1=False
-                    elif a=='2':
-                        empilha(baralho, y-1,y-4)
-                        ag1=False
-                    else:
-                        a=input('Escolha 1 ou 2: ')
-                ag=False
-            elif escolha==[1]:
-                empilha(baralho,y-1,y-2)
-                ag=False
-            elif escolha==[3]:
-                empilha(baralho,y-1,y-4)
-                ag=False
-            else:
-                y = int(input('A carta {0}, não pode ser movida. Por favor digite outro número (entre 1 e {1})'.format(baralho[y-1],len(baralho))))
-                ag3 = True
-                while ag3:
-                    if y<1 or y>len(baralho):
-                        y=int(input('Posição inválida. Por favor escolha outra carta (digite um número entre 1 e {0}):'.format(len(baralho))))
-                    else:
-                        ag3 = False
-                ag3 = True 
+    x = input('Aperte ENTER para começar o jogo...')
+    if x == '' or x!='':
         i=0
         while i<len(baralho):
             print('{0}. {1}'.format(i+1,baralho[i]))
             i+=1
+        
         da_jogar=possui_movimentos_possiveis(baralho)
- 
+        while da_jogar:
+            y = int(input('Escolha uma carta (digite um número entre 1 e {0}):'.format(len(baralho))))
+            ag = True
+            while ag:
+                if y<1 or y>len(baralho):
+                    y=int(input('Posição inválida. Por favor escolha outra carta (digite um número entre 1 e {0}):'.format(len(baralho))))
+                else:
+                    ag = False
+            ag = True
+            while ag:
+                escolha = lista_movimentos_possiveis(baralho,y-1)
+                if escolha==[1,3] and len(baralho)>3:
+                    print('Sobre qual carta voce quer empilhar o {0}'.format(baralho[y-1]))
+                    print('1. {0}'.format(baralho[y-2]))
+                    print('2. {0}'.format(baralho[y-4]))
+                    a=input('Escolha 1 ou 2: ')
+                    ag1=True
+                    while ag1:
+                        if a =='1':
+                            empilha(baralho, y-1,y-2)
+                            ag1=False
+                        elif a=='2':
+                            empilha(baralho, y-1,y-4)
+                            ag1=False
+                        else:
+                            a=input('Escolha 1 ou 2: ')
+                    ag=False
+                elif escolha==[1]:
+                    empilha(baralho,y-1,y-2)
+                    ag=False
+                elif escolha==[3]:
+                    empilha(baralho,y-1,y-4)
+                    ag=False
+                else:
+                    y = int(input('A carta {0}, não pode ser movida. Por favor digite outro número (entre 1 e {1})'.format(baralho[y-1],len(baralho))))
+                    ag3 = True
+                    while ag3:
+                        if y<1 or y>len(baralho):
+                            y=int(input('Posição inválida. Por favor escolha outra carta (digite um número entre 1 e {0}):'.format(len(baralho))))
+                        else:
+                            ag3 = False
+                    ag3 = True 
+            i=0
+            while i<len(baralho):
+                print('{0}. {1}'.format(i+1,baralho[i]))
+                i+=1
+            da_jogar=possui_movimentos_possiveis(baralho)
+
+        
+        if len(baralho) == 1:
+            print("Parabéns, campeão. Você conseguiu! :]")
+        else:
+            print("Poxa, não foi dessa vez. Mais sorte na próxima! :(")
     
-    if len(baralho) == 1:
-        print("Parabéns, campeão. Você conseguiu! :]")
-    else:
-        print("Poxa, não foi dessa vez. Mais sorte na próxima! :(")
+    contador =True
+    while contador:
+        perguntadnv = input('Quer jogar de novo? s/n: ')
+        if perguntadnv == 'n':
+            denovo = False
+            contador = False
+            print('Obrigado por jogar!')
+        elif perguntadnv == 's':
+            denovo = True
+            contador = False
+        else:
+            perguntadnv
