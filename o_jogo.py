@@ -145,11 +145,22 @@ if x == '':
                 ag=False
             else:
                 y = int(input('A carta {0}, não pode ser movida. Por favor digite outro número (entre 1 e {1})'.format(baralho[y-1],len(baralho))))
-            
+                ag3 = True
+                while ag3:
+                    if y<1 or y>len(baralho):
+                        y=int(input('Posição inválida. Por favor escolha outra carta (digite um número entre 1 e {0}):'.format(len(baralho))))
+                    else:
+                        ag3 = False
+                ag3 = True    
         i=0
         while i<len(baralho):
             print('{0}. {1}'.format(i+1,baralho[i]))
             i+=1
+        if escolha == []:
+            if len(baralho) == 1:
+                print("Parabéns, campeão. Você conseguiu! :]")
+            else:
+                print("Poxa, não foi dessa vez. Mais sorte na próxima! :(")
 
         
 
