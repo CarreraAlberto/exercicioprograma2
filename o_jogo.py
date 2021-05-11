@@ -112,34 +112,37 @@ if x == '':
     da_jogar=possui_movimentos_possiveis(baralho)
     while da_jogar:
         y = int(input('Escolha uma carta (digite um número entre 1 e {0}):'.format(len(baralho))))
-        while True:
+        ag = True
+        while ag:
             if y<1 or y>len(baralho):
                 y=input('Posição inválida. Por favor escolha outra carta (digite um número entre 1 e {0}):'.format(len(baralho)))
             else:
-                break
-        while True:
+                ag = False
+        ag = True
+        while ag:
             escolha = lista_movimentos_possiveis(baralho,y-1)
             if escolha==[1,3]:
                 print('Sobre qual carta voce quer empilhar o {0}'.format(baralho[y-1]))
                 print('1. {0}'.format(baralho[y-2]))
                 print('2. {0}'.format(baralho[y-4]))
                 a=input('Escolha 1 ou 2: ')
-                while True:
+                ag1=True
+                while ag1:
                     if a ==1:
                         empilha(baralho, y-1,y-2)
-                        break
+                        ag1=False
                     elif a==2:
                         empilha(baralho, y-1,y-4)
-                        break
+                        ag1=False
                     else:
                         a
-                break
+                ag=False
             elif escolha==1:
                 empilha(baralho,y-1,y-2)
-                break
+                ag=False
             elif escolha==3:
                 empilha(baralho,y-1,y-4)
-                break
+                ag=False
             else:
                 input('A carta {0}, não pode ser movida. Por favor digite outro número (entre 1 e {1})'.format(baralho[y-1],len(baralho)))
             
