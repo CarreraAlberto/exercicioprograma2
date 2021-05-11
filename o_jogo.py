@@ -105,10 +105,47 @@ random.shuffle(baralho)
 x = input('Aperte ENTER para começar o jogo...')
 if x == '':
     i=0
-    while i<len(baralho) and possui_movimentos_possiveis(baralho) == True:
+    while i<len(baralho):
         print('{0}. {1}'.format(i+1,baralho[i]))
         i+=1
     
-    
+    da_jogar=possui_movimentos_possiveis(baralho)
+    while da_jogar:
+        y = int(input('Escolha uma carta (digite um número entre 1 e {0}):'.format(len(baralho))))
+        while True:
+            if y<1 or y>len(baralho):
+                y=input('Posição inválida. Por favor escolha outra carta (digite um número entre 1 e {0}):'.format(len(baralho)))
+            else:
+                break
+        while True:
+            escolha = lista_movimentos_possiveis(baralho,y-1)
+            if escolha==[1,3]:
+                print('Sobre qual carta voce quer empilhar o {0}'.format(baralho[y-1]))
+                print('1. {0}'.format(baralho[y-2]))
+                print('2. {0}'.format(baralho[y-4]))
+                a=input('Escolha 1 ou 2: ')
+                while True:
+                    if a ==1:
+                        empilha(baralho, y-1,y-2)
+                        break
+                    elif a==2:
+                        empilha(baralho, y-1,y-4)
+                        break
+                    else:
+                        a
+                break
+            elif escolha==1:
+                empilha(baralho,y-1,y-2)
+                break
+            elif escolha==3:
+                empilha(baralho,y-1,y-4)
+                break
+            else:
+                input('A carta {0}, não pode ser movida. Por favor digite outro número (entre 1 e {1})'.format(baralho[y-1],len(baralho)))
+            
+        i=0
+        while i<len(baralho):
+            print('{0}. {1}'.format(i+1,baralho[i]))
+            i+=1
 
 
